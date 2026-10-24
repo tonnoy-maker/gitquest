@@ -9,7 +9,7 @@ GitQuest is a small, responsive browser game that teaches Git and GitHub through
 ## Share it with anyone using GitHub Pages
 
 
-Future updates to the files on `main` publish to the same URL automatically. GitHub may take a minute or two to publish the first version.
+you want.
 
 ## What you can learn
 
