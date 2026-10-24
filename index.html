@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Learn Git and GitHub by playing six interactive missions and experimenting in a safe visual repository playground.">
+<meta name="theme-color" content="#0b1020">
+<title>GitQuest — Git & GitHub Adventure</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2e;--panel2:#18233c;--line:#293754;--text:#edf3ff;--muted:#9eacc8;--green:#61e6a5;--blue:#7ab7ff;--orange:#ffc878;--red:#ff858c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#17274a 0%,var(--bg) 55%);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1120px;margin:auto;padding:28px 18px 56px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:12px}.logo{width:45px;height:45px;border-radius:14px;background:linear-gradient(135deg,#6de8ac,#6eaaff);display:grid;place-items:center;color:#071425;font-size:24px;font-weight:900}.eyebrow{color:var(--green);font-size:12px;text-transform:uppercase;letter-spacing:.15em;font-weight:800}h1{font-size:clamp(27px,4vw,42px);line-height:1.1;margin:4px 0}h2{font-size:18px;margin:0 0 12px}p{margin:7px 0;color:var(--muted)}.pill{border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--muted);font-size:13px}.hero{padding:30px 0 20px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center}.hero p{max-width:620px;font-size:16px}.hero-art{border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#172847,#11192b);padding:18px;min-height:150px;display:flex;align-items:center;justify-content:center;gap:10px}.node{border:1px solid #3b547c;background:#1c2b49;border-radius:12px;padding:12px 14px;text-align:center;min-width:82px}.node strong{display:block;color:var(--blue)}.arrow{color:var(--green);font-size:24px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 24px}.stat,.panel{background:rgba(18,26,46,.92);border:1px solid var(--line);border-radius:16px;padding:17px}.stat b{font-size:23px;display:block}.stat span{color:var(--muted);font-size:12px}.layout{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.panel{margin-bottom:16px}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px}.small{font-size:12px;color:var(--muted)}.branchmap{display:flex;flex-direction:column;gap:13px;margin:18px 0}.branchline{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.branchlabel{width:70px;color:var(--muted);font-size:12px}.commit{border:1px solid #3c537b;background:#1a2944;padding:8px 11px;border-radius:10px;font-size:12px}.commit.current{border-color:var(--green);box-shadow:0 0 0 1px #61e6a533}.commit .dot{display:inline-block;width:7px;height:7px;background:var(--green);border-radius:50%;margin-right:5px}.command{background:#080d18;border:1px solid #26334d;border-radius:12px;padding:14px;font:13px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace;color:#c5d4f1;white-space:pre-wrap;min-height:78px}.command .prompt{color:var(--green)}.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}button{border:1px solid #3b4b69;border-radius:10px;background:#1b2943;color:var(--text);padding:10px 13px;font-weight:700;cursor:pointer;transition:.15s}button:hover{transform:translateY(-1px);border-color:var(--blue)}button.primary{background:var(--green);border-color:var(--green);color:#07172a}button:disabled{opacity:.4;cursor:not-allowed;transform:none}.levels{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.level{padding:12px;text-align:left;min-height:80px}.level strong{display:block}.level span{font-size:12px;color:var(--muted)}.level.active{border-color:var(--green);background:#173a37}.level:disabled{opacity:.45;cursor:not-allowed}.level:disabled:hover{transform:none;border-color:#3b4b69}.question{font-size:17px;font-weight:750;margin:8px 0 14px}.answers{display:grid;gap:8px}.answer{text-align:left}.answer.correct{border-color:var(--green);background:#16372f}.answer.wrong{border-color:var(--red);background:#3a202b}.feedback{margin-top:12px;border-radius:10px;padding:10px 12px;background:#17243b;color:var(--muted);min-height:44px}.feedback.good{color:var(--green)}.feedback.bad{color:var(--orange)}.progress{height:7px;background:#26324a;border-radius:99px;overflow:hidden;margin:12px 0}.progress>div{height:100%;background:linear-gradient(90deg,var(--green),var(--blue));width:0%;transition:width .25s}.footer{margin-top:14px;text-align:center;color:var(--muted);font-size:12px}.tag{font-size:11px;color:var(--green);border:1px solid #315e54;border-radius:99px;padding:4px 7px}.lesson{display:flex;gap:10px;align-items:flex-start;margin:12px 0}.lesson .icon{width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:#203451;color:var(--blue);flex-shrink:0}.lesson b{display:block}.lesson p{font-size:13px;margin:2px 0}.toast{color:var(--orange);font-size:12px;margin-top:7px}
+@media(max-width:760px){.hero,.layout{grid-template-columns:minmax(0,1fr)}.hero{padding-top:20px}.hero>div,.hero-art,.layout>div{min-width:0;max-width:100%}.hero-art{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:6px;min-height:120px}.hero-art .node{min-width:0;padding:10px 5px;overflow-wrap:anywhere}.hero-art .arrow{font-size:18px;text-align:center}.hero-art .small{font-size:10px;overflow-wrap:anywhere}.stats{gap:7px}.stat{padding:12px}.stat b{font-size:20px}.branchlabel{width:60px}.levels{grid-template-columns:1fr 1fr}}
+@media(max-width:360px){main{padding-left:12px;padding-right:12px}.hero-art{gap:4px;padding:10px}.hero-art .node{font-size:11px}.hero-art .small{font-size:9px}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.stat span{font-size:11px}.level{padding:9px}.branchlabel{width:52px}}
+</style>
+</head>
+<body>
+<main>
+<header class="top">
+  <div class="brand"><div class="logo">⌘</div><div><div class="eyebrow">Learn by doing</div><h1>GitQuest</h1></div></div>
+  <div class="pill">A mini game for Git & GitHub</div>
+</header>
+<section class="hero">
+ <div><div class="eyebrow">Your code. Your journey.</div><h1>Level up your Git skills.</h1><p>Practice the real workflow in a safe playground. Make commits, branch off, merge changes, and push your project to GitHub — one challenge at a time.</p><div class="btnrow"><button class="primary" onclick="startChallenge()">▶ Start challenge</button><button onclick="resetGame()">Reset game</button></div></div>
+ <div class="hero-art" aria-label="Visual Git workflow"><div class="node"><strong>Working</strong><span class="small">edit files</span></div><div class="arrow">→</div><div class="node"><strong>Commit</strong><span class="small">save snapshot</span></div><div class="arrow">→</div><div class="node"><strong>GitHub</strong><span class="small">share code</span></div></div>
+</section>
+<section class="stats">
+ <div class="stat"><b id="xp">0 XP</b><span>Experience earned</span></div>
+ <div class="stat"><b id="done">0 / 6</b><span>Challenges completed</span></div>
+ <div class="stat"><b id="streak">0</b><span>Correct answers in a row</span></div>
+</section>
+<section class="layout">
+ <div>
+  <div class="panel">
+   <div class="panelhead"><h2>Repository playground</h2><span class="tag" id="repoStatus">clean working tree</span></div>
+   <p>Try commands below and watch the repository change. This is a simulation; it won't touch your real files.</p>
+   <div class="branchmap" id="branchmap">
+    <div class="branchline"><span class="branchlabel">main</span><span class="commit current"><span class="dot"></span>initial commit</span></div>
+   </div>
+   <div class="command" id="terminal" role="status" aria-live="polite" aria-label="Simulated terminal output"><span class="prompt">$</span> git status
+On branch main
+nothing to commit, working tree clean</div>
+   <div class="btnrow">
+    <button onclick="runCommand('edit')">1. Edit file</button><button onclick="runCommand('add')">2. git add .</button><button onclick="runCommand('commit')">3. git commit</button><button onclick="runCommand('branch')">4. Create branch</button><button onclick="runCommand('merge')">5. Merge branch</button><button onclick="runCommand('push')">6. git push</button>
+   </div>
+   <div class="toast" id="simHint">Tip: edit a file, stage it, then commit your change.</div>
+  </div>
+  <div class="panel">
+   <div class="panelhead"><h2>Choose a mission</h2><span class="small">6 missions</span></div>
+   <div class="levels" id="levels">
+    <button class="level active" onclick="selectMission(0)"><strong>01 · First save</strong><span>Stage & commit</span></button>
+    <button class="level" onclick="selectMission(1)"><strong>02 · New path</strong><span>Branches</span></button>
+    <button class="level" onclick="selectMission(2)"><strong>03 · Teamwork</strong><span>Merge changes</span></button>
+    <button class="level" onclick="selectMission(3)"><strong>04 · Remote world</strong><span>Push to GitHub</span></button>
+    <button class="level" onclick="selectMission(4)"><strong>05 · Time machine</strong><span>Inspect history</span></button>
+    <button class="level" onclick="selectMission(5)"><strong>06 · Safe sharing</strong><span>Pull requests</span></button>
+   </div>
+  </div>
+ </div>
+ <div>
+  <div class="panel">
+   <div class="panelhead"><h2 id="missionTitle">Mission 1: Save your work</h2><span class="tag" id="missionTag">BEGINNER</span></div>
+   <div class="progress"><div id="missionProgress"></div></div>
+   <div class="question" id="question">Which command stages your changed files so they can be committed?</div>
+   <div class="answers" id="answers" role="group" aria-label="Answer choices"></div>
+   <div class="feedback" id="feedback">Pick an answer to earn XP and unlock the next mission.</div>
+   <div class="btnrow"><button class="primary" id="nextBtn" onclick="nextQuestion()" disabled>Next question →</button></div>
+  </div>
+  <div class="panel">
+   <h2>Quick field guide</h2>
+   <div class="lesson"><div class="icon">⌁</div><div><b>Git is version control</b><p>It tracks snapshots of your project so you can inspect or restore changes.</p></div></div>
+   <div class="lesson"><div class="icon">●</div><div><b>Commit = local save point</b><p>A commit records staged changes in your local repository.</p></div></div>
+   <div class="lesson"><div class="icon">⇧</div><div><b>Push = send commits</b><p>Push uploads local commits to a remote repository such as GitHub.</p></div></div>
+   <div class="lesson"><div class="icon">⑂</div><div><b>Branch = separate line of work</b><p>Build a feature without changing the main branch until you're ready.</p></div></div>
+  </div>
+ </div>
+</section>
+<div class="footer">GitQuest is an educational simulation. It never connects to your GitHub account or runs real Git commands.</div>
+</main>
+<script>
+const missions=[
+{title:"Mission 1: Save your work",tag:"BEGINNER",q:"Which command stages your changed files so they can be committed?",a:["git push","git add .","git clone","git status"],correct:1,why:"git add stages changes. Then git commit records the staged snapshot."},
+{title:"Mission 2: New path",tag:"BEGINNER",q:"Which command creates and switches to a new branch named feature-login?",a:["git branch main","git push feature-login","git switch -c feature-login","git status -b"],correct:2,why:"git switch -c creates a new branch and switches to it."},
+{title:"Mission 3: Teamwork",tag:"INTERMEDIATE",q:"You are on main and want to bring feature-login into main. What is the usual sequence?",a:["git merge main, then switch feature-login","git switch main, then git merge feature-login","git push feature-login, then delete main","git clone feature-login"],correct:1,why:"Switch to the branch that should receive the changes, then merge the feature branch into it."},
+{title:"Mission 4: Remote world",tag:"INTERMEDIATE",q:"Your local commits are ready to upload to the remote branch. Which command is used?",a:["git add origin","git push","git init","git diff"],correct:1,why:"git push sends local commits to a configured remote such as GitHub."},
+{title:"Mission 5: Time machine",tag:"INTERMEDIATE",q:"Which command shows the commit history?",a:["git log","git status","git remote","git clean"],correct:0,why:"git log displays commit history, including commit IDs, authors, dates, and messages."},
+{title:"Mission 6: Safe sharing",tag:"ADVANCED",q:"What is a GitHub pull request mainly used for?",a:["Automatically delete a branch","Ask to review and merge proposed changes","Install Git on your computer","Save changes without a commit"],correct:1,why:"A pull request lets collaborators discuss, review, and merge proposed changes."}
+];
+let mission=0,answered=false,xp=0,completed=new Set(),streak=0,highestUnlocked=0;
+const sim={edited:false,staged:false,commits:1,branchExists:false,currentBranch:'main',mainUpdate:false,featureCommit:false,merged:false,pushed:false};
+function renderMission(){
+  const m=missions[mission];
+  document.getElementById('missionTitle').textContent=m.title;
+  document.getElementById('missionTag').textContent=m.tag;
+  document.getElementById('question').textContent=m.q;
+  document.getElementById('missionProgress').style.width=(completed.size/missions.length*100)+'%';
+  const feedback=document.getElementById('feedback');
+  feedback.className='feedback';
+  feedback.textContent=completed.has(mission)?'Mission completed. Practice again, or continue to the next unlocked mission.':'Pick the correct answer to earn 20 XP and unlock the next mission.';
+  document.getElementById('nextBtn').disabled=!completed.has(mission);
+  answered=false;
+  const answers=document.getElementById('answers');
+  answers.replaceChildren();
+  m.a.forEach((label,index)=>{
+    const button=document.createElement('button');
+    button.className='answer';
+    button.textContent=label;
+    button.onclick=()=>answer(index,button);
+    answers.appendChild(button);
+  });
+  document.querySelectorAll('.level').forEach((button,index)=>{
+    button.classList.toggle('active',index===mission);
+    button.disabled=index>highestUnlocked;
+    button.setAttribute('aria-current',index===mission?'step':'false');
+  });
+}
+function answer(index,button){
+  if(answered)return;
+  const m=missions[mission];
+  const correct=index===m.correct;
+  const feedback=document.getElementById('feedback');
+  if(!correct){
+    button.classList.add('wrong');
+    button.disabled=true;
+    streak=0;
+    document.getElementById('streak').textContent=streak;
+    feedback.className='feedback bad';
+    feedback.textContent='Not quite. '+m.why+' Try another answer.';
+    if(!completed.has(mission))document.getElementById('nextBtn').disabled=true;
+    return;
+  }
+  answered=true;
+  document.querySelectorAll('#answers button').forEach((answerButton,i)=>{
+    answerButton.disabled=true;
+    answerButton.classList.remove('wrong');
+    if(i===m.correct)answerButton.classList.add('correct');
+  });
+  const alreadyCompleted=completed.has(mission);
+  if(!alreadyCompleted){
+    completed.add(mission);
+    xp+=20;
+    streak++;
+    highestUnlocked=Math.max(highestUnlocked,Math.min(mission+1,missions.length-1));
+  }
+  document.getElementById('xp').textContent=xp+' XP';
+  document.getElementById('done').textContent=completed.size+' / '+missions.length;
+  document.getElementById('streak').textContent=streak;
+  document.getElementById('missionProgress').style.width=(completed.size/missions.length*100)+'%';
+  document.getElementById('nextBtn').disabled=false;
+  feedback.className='feedback good';
+  feedback.textContent=(alreadyCompleted?'Correct — this mission is already complete. ':'Correct! +20 XP. ')+m.why;
+  document.querySelectorAll('.level').forEach((level,i)=>{level.disabled=i>highestUnlocked});
+}
+function selectMission(index){
+  if(index>highestUnlocked)return;
+  mission=index;
+  renderMission();
+}
+function nextQuestion(){
+  if(!completed.has(mission)){
+    const f=document.getElementById('feedback');
+    f.className='feedback bad';
+    f.textContent='Answer correctly before moving on.';
+    return;
+  }
+  if(mission<missions.length-1){
+    mission++;
+    renderMission();
+  }else{
+    const f=document.getElementById('feedback');
+    f.className='feedback good';
+    f.textContent=completed.size===missions.length?'🎉 All six missions complete! You are ready to practice in a real repository.':'You reached the final mission. Finish any remaining challenges to complete GitQuest.';
+  }
+}
+function startChallenge(){
+  document.querySelector('.layout').scrollIntoView({behavior:'smooth'});
+  const next=missions.findIndex((_,i)=>!completed.has(i));
+  if(next===-1){
+    mission=missions.length-1;
+    renderMission();
+    const f=document.getElementById('feedback');f.className='feedback good';f.textContent='🎉 You completed all six missions. Reset the game to play again.';
+  }else selectMission(Math.min(next,highestUnlocked));
+}
+function resetGame(){
+  mission=0;answered=false;xp=0;completed=new Set();streak=0;highestUnlocked=0;
+  Object.assign(sim,{edited:false,staged:false,commits:1,branchExists:false,currentBranch:'main',mainUpdate:false,featureCommit:false,merged:false,pushed:false});
+  document.getElementById('xp').textContent='0 XP';
+  document.getElementById('done').textContent='0 / 6';
+  document.getElementById('streak').textContent='0';
+  renderMission();
+  renderRepo('Game reset. Start with Edit file.');
+}
+function renderRepo(message){
+  const lines=[];
+  let main='<div class="branchline"><span class="branchlabel">main</span><span class="commit '+(sim.currentBranch==='main'?'current':'')+'"><span class="dot"></span>initial commit</span>';
+  if(sim.mainUpdate)main+='<span class="commit current"><span class="dot"></span>update UI</span>';
+  if(sim.merged)main+='<span class="commit current"><span class="dot"></span>merge feature</span>';
+  main+='</div>';lines.push(main);
+  if(sim.branchExists){
+    let feature='<div class="branchline"><span class="branchlabel">feature/ui</span>';
+    feature+='<span class="commit '+(sim.currentBranch==='feature/ui'?'current':'')+'"><span class="dot"></span>'+(sim.featureCommit?'feature work':'branch created')+'</span></div>';
+    lines.push(feature);
+  }
+  document.getElementById('branchmap').innerHTML=lines.join('');
+  document.getElementById('repoStatus').textContent=sim.staged?'changes staged':sim.edited?'modified files':sim.pushed?'pushed to remote':'working tree clean';
+  let output='';
+  if(message){
+    const parts=message.split('\n');
+    const command=parts.shift();
+    output=command+'\n'+parts.join('\n');
+  }else{
+    output='git status\nOn branch '+sim.currentBranch+'\n';
+    if(sim.staged)output+='Changes to be committed:\n  modified: app.js';
+    else if(sim.edited)output+='Changes not staged for commit:\n  modified: app.js';
+    else output+='nothing to commit, working tree clean';
+  }
+  const terminal=document.getElementById('terminal');
+  terminal.replaceChildren();
+  const prompt=document.createElement('span');prompt.className='prompt';prompt.textContent='$ ';
+  terminal.append(prompt,document.createTextNode(output));
+  document.getElementById('simHint').textContent=message?message.split('\n').join(' — '):'Tip: edit a file, stage it, then commit your change.';
+}
+function runCommand(command){
+  let message='';
+  if(command==='edit'){
+    sim.edited=true;sim.staged=false;sim.pushed=false;
+    message='edit app.js\nFile changed. Run git add . to stage it.';
+  }else if(command==='add'){
+    if(!sim.edited)message='git add .\nNothing to add — edit a file first.';
+    else{sim.staged=true;message='git add .\nChanges staged successfully.';}
+  }else if(command==='commit'){
+    if(!sim.staged)message='git commit -m "Update UI"\nNothing to commit — edit a file and stage your changes first.';
+    else{
+      sim.commits++;sim.edited=false;sim.staged=false;sim.pushed=false;
+      if(sim.currentBranch==='feature/ui')sim.featureCommit=true;else sim.mainUpdate=true;
+      message='git commit -m "Update UI"\n['+sim.currentBranch+' '+sim.commits+'] saved changes.';
+    }
+  }else if(command==='branch'){
+    if(sim.branchExists){
+      sim.currentBranch='feature/ui';
+      message='git switch feature/ui\nSwitched to existing branch feature/ui.';
+    }else{
+      sim.branchExists=true;sim.currentBranch='feature/ui';
+      message='git switch -c feature/ui\nSwitched to a new branch feature/ui.';
+    }
+  }else if(command==='merge'){
+    if(!sim.branchExists)message='git merge feature/ui\nBranch not found — create a branch first.';
+    else if(!sim.featureCommit)message='git merge feature/ui\nNo feature commit yet — edit, stage, and commit while on feature/ui first.';
+    else{
+      sim.currentBranch='main';sim.merged=true;sim.pushed=false;
+      message='git switch main\ngit merge feature/ui\nMerge completed in simulation.';
+    }
+  }else if(command==='push'){
+    if(sim.commits<=1)message='git push -u origin '+sim.currentBranch+'\nNo new commits to push yet.';
+    else{
+      sim.pushed=true;
+      message='git push -u origin '+sim.currentBranch+'\nSimulation only: commits would be sent to your configured GitHub remote.';
+    }
+  }
+  renderRepo(message);
+}
+renderMission();
+renderRepo();
+</script>
+</body>
+</html>
